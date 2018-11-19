@@ -11,7 +11,7 @@ class ListItem{
     public ListItem(int value, Point pos){
         this.value = value;
         this.pos = pos;
-        this.neighbours = new ArrayList<ListItem>();
+        this.neighbours = new ArrayList<>();
     }
 
     public Point getPos() {
