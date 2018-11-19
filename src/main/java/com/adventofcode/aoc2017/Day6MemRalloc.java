@@ -33,7 +33,7 @@ public class Day6MemRalloc {
         } finally {
             System.out.println(mem);
             System.out.println(iterations);
-            System.out.println(stateIndex.indexOf(mem)-iterations);
+            System.out.println(stateIndex.indexOf(mem) - iterations);
         }
     }
 
@@ -56,7 +56,7 @@ public class Day6MemRalloc {
         for (int i = currentMaxIndex + 1; blocks > 0; i++) {
             int realIndex = i % mem.size();
             blocks--;
-            mem.set(realIndex, mem.get(realIndex)+1);
+            mem.set(realIndex, mem.get(realIndex) + 1);
         }
 
         System.out.println(mem);

@@ -1,10 +1,8 @@
 package com.adventofcode.aoc2017;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Day5MazeTwist {
     List<Integer> instr;
@@ -15,17 +13,9 @@ public class Day5MazeTwist {
 
     public static void main(String[] args) {
         Day5MazeTwist app = new Day5MazeTwist();
-        Scanner s = null;
-        try {
-            s = new Scanner(new File("C:\\Users\\npappas\\Desktop\\day5Maze.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        ArrayList<String> list = new ArrayList<String>();
-        while (s.hasNextLine()) {
-            app.instr.add(Integer.parseInt(s.nextLine()));
-        }
-//        ===============================================================================
+        List<String> list = Utils.readFile(Utils.INPUTS + "/day5.txt").collect(Collectors.toList());
+        list.forEach(s -> app.instr.add(Integer.parseInt(s)));
+
         int cursor = 0;
         int steps = 0;
 

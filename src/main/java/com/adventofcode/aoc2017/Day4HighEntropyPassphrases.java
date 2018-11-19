@@ -1,8 +1,8 @@
 package com.adventofcode.aoc2017;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Day4HighEntropyPassphrases {
@@ -18,7 +18,7 @@ public class Day4HighEntropyPassphrases {
     }
 
     public static void main(String[] args) {
-        List<String> list = Utils.readFile(Utils.INPUTS + "/passes.txt").collect(Collectors.toList());
+        List<String> list = Utils.readFile(Utils.INPUTS + "/day4.txt").collect(Collectors.toList());
 
         Day4HighEntropyPassphrases app = new Day4HighEntropyPassphrases(list);
         System.out.println(app.solve());
