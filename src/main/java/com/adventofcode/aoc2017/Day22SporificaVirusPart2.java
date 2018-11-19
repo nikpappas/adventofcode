@@ -39,7 +39,7 @@ public class Day22SporificaVirusPart2 {
     }
 
     public static void main(String[] args) {
-        Day22SporificaVirusPart2 app = new Day22SporificaVirusPart2("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\Day22.txt");
+        Day22SporificaVirusPart2 app = new Day22SporificaVirusPart2("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\day22.txt");
         app.printMap();
         for(int i=0;i<10000000;i++){
             app.car.act(app.map);

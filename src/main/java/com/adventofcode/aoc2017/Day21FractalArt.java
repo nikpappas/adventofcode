@@ -22,11 +22,11 @@ public class Day21FractalArt {
     }
 
     public static void main(String[] args){
-        Day21FractalArt app = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\Day21.txt");
+        Day21FractalArt app = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\day21.txt");
         Day21FractalArt.test();
         app.solve(5);
 //        Part 2
-        app = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\Day21.txt");
+        app = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\day21.txt");
         app.solve(18);
     }
     private static boolean count5(String s){
@@ -298,7 +298,7 @@ public class Day21FractalArt {
     }
 
     private static void testFlipInvRot() {
-        Day21FractalArt test = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\Day21.txt");
+        Day21FractalArt test = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\day21.txt");
         if(!test.flipInvRot("../##",1).equals(".#/.#")) throw new Error("flipInvRot not working");
         if(!test.flipInvRot(".#/.#",1).equals("##/..")) throw new Error("flipInvRot not working");
         if(!test.flipInvRot(".#/..",1).equals("#./..")) throw new Error("flipInvRot not working");
@@ -308,7 +308,7 @@ public class Day21FractalArt {
 
 
     private static void testFlipHor() {
-        Day21FractalArt test = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\Day21.txt");
+        Day21FractalArt test = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\day21.txt");
         if(!test.flipHor("../##").equals("../##")) throw new Error("flipHor not working");
 // size 3
         if(!test.flipHor("..#/..#/..#").equals("#../#../#.."))throw new Error("flipHor not working");
@@ -316,13 +316,13 @@ public class Day21FractalArt {
     }
 
     private static void testFlipVer() {
-        Day21FractalArt test = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\Day21.txt");
+        Day21FractalArt test = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\day21.txt");
         if(!test.flipVer("../##").equals("##/.."))throw new Error("flipVer not working");
 // size 3
         if(!test.flipVer("###/.../...").equals(".../.../###"))throw new Error("flipVer not working");
     }
     private static void testFlipRot() {
-        Day21FractalArt test = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\Day21.txt");
+        Day21FractalArt test = new Day21FractalArt("C:\\Users\\papakos\\Desktop\\Projects\\JavaQuestions\\AdventOfCode2017\\inputs\\day21.txt");
         if(!test.flipRot("../##",1).equals("#./#.")) throw new Error("flipRot not working");
         if(!test.flipRot(".#/.#",1).equals("../##")) throw new Error("flipRot not working");
         if(!test.flipRot(".#/..",1).equals("../.#")) throw new Error("flipRot not working");
