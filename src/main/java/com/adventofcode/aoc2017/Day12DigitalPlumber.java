@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.adventofcode.aoc2017.Utils.INPUTS;
+
 public class Day12DigitalPlumber {
     HashMap<Integer,List<Integer>> map;
     Set<Integer> zeroGroup;
@@ -14,7 +16,7 @@ public class Day12DigitalPlumber {
     }
 
     public static void main(String [] args){
-        Day12DigitalPlumber app = new Day12DigitalPlumber("C:\\Users\\npappas\\Desktop\\advOfCode\\day12.txt");
+        Day12DigitalPlumber app = new Day12DigitalPlumber(INPUTS + "/day12.txt");
          System.out.println(app.map);
          app.solve();
     }
