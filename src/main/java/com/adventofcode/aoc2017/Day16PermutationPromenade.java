@@ -1,27 +1,32 @@
 package com.adventofcode.aoc2017;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.adventofcode.aoc2017.Utils.INPUTS;
 
 public class Day16PermutationPromenade {
     ArrayDeque<Character> p;
     List<String> inst;
-    public Day16PermutationPromenade(){
+
+    public Day16PermutationPromenade() {
         p = makeProgramList('p');
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Day16PermutationPromenade app = new Day16PermutationPromenade();
-        app.inst = app.parseInstructions("C:\\Users\\npappas\\Desktop\\advOfCode\\day16.txt");
+        app.inst = app.parseInstructions(INPUTS + "/day16.txt");
         System.out.println(app.inst);
         System.out.println(app.inst.size());
         System.out.println("starting with " + app.p);
-        try{
+        try {
             int total = 1;
-            while(total<1000000000){
+            while (total < 1000000000) {
                 app.solve();
-                if(app.compareWithInitial()){
+                if (app.compareWithInitial()) {
                     break;
                 }
                 total++;
@@ -29,12 +34,12 @@ public class Day16PermutationPromenade {
             System.out.println(total);
             System.out.println(app.p);
             int loop = 1;
-            while(loop<=(1000000000%total)){
+            while (loop <= (1000000000 % total)) {
                 app.solve();
-                System.out.println(loop+" "+app.p);
+                System.out.println(loop + " " + app.p);
                 loop++;
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
         System.out.println(app.p);
@@ -42,17 +47,17 @@ public class Day16PermutationPromenade {
     }
 
     private boolean compareWithInitial() {
-        Iterator it= p.iterator();
-        for(char c = 'a';it.hasNext();c++){
-            if(!it.next().equals(c)) return false;
+        Iterator it = p.iterator();
+        for (char c = 'a'; it.hasNext(); c++) {
+            if (!it.next().equals(c)) return false;
         }
         return true;
     }
 
-    private void solve() throws Exception{
-        for(String i: inst){
+    private void solve() throws Exception {
+        for (String i : inst) {
             char operation = i.charAt(0);
-            switch (operation){
+            switch (operation) {
                 case 's':
                     spin(Integer.parseInt(i.substring(1)));
                     break;
@@ -62,8 +67,8 @@ public class Day16PermutationPromenade {
                 case 'p':
                     swapByName(i.substring(1));
                     break;
-                 default:
-                     throw new Exception("should never hang around here");
+                default:
+                    throw new Exception("should never hang around here");
             }
 
         }
@@ -77,7 +82,7 @@ public class Day16PermutationPromenade {
         Character swapChar = array[pos1];
         array[pos1] = array[pos2];
         array[pos2] = swapChar;
-        p = new ArrayDeque<Character>(Arrays.asList(array));
+        p = new ArrayDeque<>(Arrays.asList(array));
 
     }
 
@@ -87,21 +92,21 @@ public class Day16PermutationPromenade {
         String name2 = names[1];
         int index1 = -1;
         int index2 = -1;
-        int index =0;
+        int index = 0;
         Iterator<Character> it = p.iterator();
-        while(index1==-1||index2==-1 && it.hasNext()){
+        while (index1 == -1 || index2 == -1 && it.hasNext()) {
             Character nex = it.next();
-            if(nex == name1.charAt(0)) index1 = index;
-            if(nex == name2.charAt(0)) index2 = index;
+            if (nex == name1.charAt(0)) index1 = index;
+            if (nex == name2.charAt(0)) index2 = index;
             index++;
         }
-        swapByPos(index1+"/"+index2);
+        swapByPos(index1 + "/" + index2);
 
     }
 
     private void spin(int i) {
         int count = 0;
-        while(count<i){
+        while (count < i) {
             p.addFirst(p.removeLast());
             count++;
         }
@@ -109,32 +114,16 @@ public class Day16PermutationPromenade {
 
     private ArrayDeque<Character> makeProgramList(char limit) {
         ArrayDeque<Character> list = new ArrayDeque<>();
-        for(char c='a';c<=limit;c++){
+        for (char c = 'a'; c <= limit; c++) {
             list.addLast(c);
         }
         return list;
     }
 
     private List<String> parseInstructions(String path) {
-        ArrayList<String> toRet = new ArrayList<>();
-        ArrayList<String> lines = new ArrayList<>();
-        Scanner s = null;
-        try {
-            s = new Scanner(new File(path));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        while (s.hasNextLine()) {
-            String line = s.nextLine();
-            lines.add(line);
-        }
-        for(String l: lines){
-            String[] tokens = l.split(",");
-            for(String st: tokens){
-                toRet.add(st);
-            }
-        }
-        return toRet;
+        return Utils.readFile(path)
+                .flatMap(l -> Arrays.stream(l.split(",")))
+                .collect(Collectors.toList());
     }
 
 }

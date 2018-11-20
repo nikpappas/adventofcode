@@ -5,6 +5,9 @@ import javafx.util.Pair;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static com.adventofcode.aoc2017.Utils.INPUTS;
 
 public class Day11HexEd {
     HashMap<String, Integer> input = new HashMap<>();
@@ -21,7 +24,7 @@ public class Day11HexEd {
         furtherSimplifications.put("nw",new Pair<>("sw","n"));
         furtherSimplifications.put("s",new Pair<>("se","sw"));
         furtherSimplifications.put("n",new Pair<>("ne","nw"));
-        app.parseText("C:\\Users\\npappas\\Desktop\\advOfCode\\day11.txt");
+        app.parseText(INPUTS + "/day11.txt");
         app.findMaxSum();
 //        app.solve(app.input);
     }
@@ -140,19 +143,8 @@ public class Day11HexEd {
         }
         return toRet;
     }
-    private HashMap<String,Integer> parseText(String path) {
-        ArrayList<String> lines = new ArrayList<>();
-        Scanner s = null;
-        try {
-            s = new Scanner(new File(path));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        ArrayList<String> list = new ArrayList<String>();
-        while (s.hasNextLine()) {
-            String line = s.nextLine();
-            lines.add(line);
-        }
+    private Map<String,Integer> parseText(String path) {
+        List<String> lines = Utils.readFile(path).collect(Collectors.toList());
         for(String l:lines){
             String[] tokens = l.split(",");
             for(String t: tokens){

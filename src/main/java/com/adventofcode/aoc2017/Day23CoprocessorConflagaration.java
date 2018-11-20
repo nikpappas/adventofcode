@@ -104,9 +104,7 @@ public class Day23CoprocessorConflagaration {
             }
             Operation op = ops.get(cur.operation);
             Optional<Long> result = op.ex(cur.registerId, cur.operand);
-            if (result.isPresent()) {
-                regs.put(cur.registerId, result.get());
-            }
+            result.ifPresent(res -> regs.put(cur.registerId, res));
             System.out.println(i + " " + regs);
 //            System.out.println(i +", "+ cur +" register = "+regs.getOrDefault(cur.registerId,0L));
             i++;
