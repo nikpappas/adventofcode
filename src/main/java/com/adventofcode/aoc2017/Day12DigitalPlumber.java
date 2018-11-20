@@ -66,17 +66,8 @@ public class Day12DigitalPlumber {
 
     private HashMap<Integer,List<Integer>> parseConnections(String path) {
         HashMap<Integer, List<Integer>> toRet = new HashMap<>();
-        ArrayList<String> lines = new ArrayList<>();
-        Scanner s = null;
-        try {
-            s = new Scanner(new File(path));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        while (s.hasNextLine()) {
-            String line = s.nextLine();
-            lines.add(line);
-        }
+        List<String> lines = Utils.readFile(path).collect(Collectors.toList());
+
         String st = "0 <-> 2\n" +
                 "1 <-> 1\n" +
                 "2 <-> 0, 3, 4\n" +
